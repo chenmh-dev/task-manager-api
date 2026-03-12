@@ -1,0 +1,133 @@
+@baseURL = http://127.0.0.1:5000
+
+GET {{baseURL}}/
+
+### Register
+POST {{baseURL}}/register
+Content-Type: application/json
+
+{
+    "username": "cmh",
+    "password": "123"
+}
+
+### Login
+# @name login
+POST {{baseURL}}/login
+Content-Type: application/json
+
+{
+    "username": "cmh",
+    "password": "123"
+}
+###
+@token = {{login.response.body.data.token}}
+
+GET {{baseURL}}/me
+Authorization: Bearer {{token}}
+
+### Create project
+POST {{baseURL}}/projects
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "name": "name {{$timestamp}}",
+    "description": "des {{$timestamp}}"
+}
+
+### List projects
+GET {{baseURL}}/projects
+Authorization: Bearer {{token}}
+### List projects
+GET {{baseURL}}/projects?page=2&page_size=4
+Authorization: Bearer {{token}}
+### List projects
+GET {{baseURL}}/projects?keyword=94&sort=id&order=desc
+Authorization: Bearer {{token}}
+
+### Get project one(project_id)
+GET {{baseURL}}/projects/1
+Authorization: Bearer {{token}}
+
+### Update project (project_id)
+PATCH {{baseURL}}/projects/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "name": "name {{$timestamp}}",
+    "description": "des ${{$timestamp}}"
+}
+
+### Delete project
+DELETE {{baseURL}}/projects/7
+Authorization: Bearer {{token}}
+
+
+
+### Create task
+POST {{baseURL}}/projects/1/tasks
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "title": "name {{$timestamp}}",
+    "description": "des {{$timestamp}}",
+    "status": "todo",
+    "due_date": "due_date {{$timestamp}}"
+}
+
+### List tasks
+GET {{baseURL}}/projects/1/tasks?order=asc
+Authorization: Bearer {{token}}
+### List tasks
+GET {{baseURL}}/projects/1/tasks?page=2&page_size=4
+Authorization: Bearer {{token}}
+### List tasks
+GET {{baseURL}}/projects/1/tasks?keyword=9&sort=id&order=asc
+Authorization: Bearer {{token}}
+
+### Get task one(project_id)
+GET {{baseURL}}/tasks/1
+Authorization: Bearer {{token}}
+
+### Update project (project_id)
+PATCH {{baseURL}}/tasks/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "title": "name {{$timestamp}}",
+    "description": "des {{$timestamp}}",
+    "status": "in_progress",
+    "due_date": "due_date {{$timestamp}}"
+}
+### Delete project
+DELETE {{baseURL}}/tasks/3
+Authorization: Bearer {{token}}
+
+
+
+### Create task_comment
+POST {{baseURL}}/tasks/1/comments
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "content": "content {{$timestamp}}"
+}
+
+### List tasks
+GET {{baseURL}}/tasks/1/comments?order=asc
+Authorization: Bearer {{token}}
+### List tasks
+GET {{baseURL}}/tasks/1/comments?page=2&page_size=4
+Authorization: Bearer {{token}}
+### List tasks
+GET {{baseURL}}/tasks/1/comments?keyword=9&sort=id&order=asc
+Authorization: Bearer {{token}}
+
+### Delete project
+DELETE {{baseURL}}/task-comments/2
+Authorization: Bearer {{token}}

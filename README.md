@@ -1,3 +1,5 @@
+Backend API built with Flask demonstrating layered architecture and resource-level authorization.
+
 # Task Manager API
 
 A small but structured backend API for a task management system built with **Flask** and **SQLite**.
@@ -8,7 +10,7 @@ The goal of this project is not to build a production-ready product, but to impl
 
 ---
 
-# Tech Stack
+## Tech Stack
 
 * Python 3.13
 * Flask
@@ -18,9 +20,9 @@ The goal of this project is not to build a production-ready product, but to impl
 
 ---
 
-# Features
+## Features
 
-## Authentication
+### Authentication
 
 * User registration
 * User login
@@ -37,7 +39,7 @@ GET  /me
 
 ---
 
-## Projects
+### Projects
 
 Users can manage their own projects.
 
@@ -63,7 +65,7 @@ All project resources are **owned by the authenticated user**.
 
 ---
 
-## Tasks
+### Tasks
 
 Each project can contain multiple tasks.
 
@@ -98,7 +100,7 @@ Tasks are accessible only if the user owns the parent project.
 
 ---
 
-## Task Comments
+### Task Comments
 
 Users can add comments to tasks.
 
@@ -123,7 +125,7 @@ Rules:
 
 ---
 
-# API Capabilities
+## List Query Features
 
 Many list endpoints support:
 
@@ -139,7 +141,7 @@ GET /projects?page=1&page_size=5&sort=created_at&order=desc
 
 ---
 
-# Project Structure
+## Project Structure
 
 ```
 app/
@@ -168,7 +170,7 @@ app/
 
 ---
 
-# Architecture
+## Architecture
 
 The project follows a **layered backend architecture**:
 
@@ -206,7 +208,7 @@ This separation keeps the code **maintainable and testable**.
 
 ---
 
-# Design Principles
+## Design Principles
 
 ### Resource Ownership
 
@@ -271,9 +273,9 @@ All request validation is handled in `validators.py`, including:
 
 ---
 
-# Running the Project
+## Running the Project
 
-## 1. Clone the repository
+### 1. Clone the repository
 
 ```
 git clone <repo_url>
@@ -282,15 +284,23 @@ cd task-manager-api
 
 ---
 
-## 2. Install dependencies
-
+### 2. Create a virtual environment
 ```
-pip install flask itsdangerous werkzeug
+python -m venv venv
+venv\Scripts\activate
 ```
 
 ---
 
-## 3. Run the server
+### 3. Install dependencies
+
+```
+pip install -r requirements.txt
+```
+
+---
+
+### 4. Run the server
 
 ```
 python run.py
@@ -300,7 +310,7 @@ The API will start locally.
 
 ---
 
-# Future Improvements
+## Future Improvements
 
 Possible extensions:
 
@@ -315,7 +325,7 @@ Possible extensions:
 
 ---
 
-# Purpose of This Project
+## Purpose of This Project
 
 This project is built to demonstrate **backend engineering thinking**, including:
 

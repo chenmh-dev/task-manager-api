@@ -4,7 +4,7 @@ from .errors import register_error_handler
 from .logging_utils import setup_logging
 from .db import init_db, close_db
 from .config import DevelopmentConfig, ProductionConfig
-def created_app():
+def create_app():
     app = Flask(__name__)
     
     env = os.getenv("APP_ENV", "development").lower()
